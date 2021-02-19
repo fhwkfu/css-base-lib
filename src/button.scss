@@ -1,0 +1,47 @@
+// 按钮
+.#{$css-prefix}-button {
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  border: solid 1px $color-primary;
+  background-color: $color-primary;
+  color: $color-white;
+  text-align: center;
+  line-height: 1.15;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: background-color .2s ease;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 4px;
+  user-select:none;
+  -ms-user-select: none;
+  
+  &:hover {
+    background-color: mixcolor($color-white, $color-primary, 20%);
+  } 
+  &:active {
+    background-color: mixcolor($color-black, $color-primary, 10%);
+  }
+
+  // 带边框的
+  &.outline {
+    border: solid 1px mixcolor($color-white, $color-primary, 60%);
+    background-color: mixcolor($color-white, $color-primary, 90%);  
+    color: $color-primary; 
+    transition: border-color .2s ease,  background-color .2s ease;
+    &:hover{
+      border-color: mixcolor($color-white, $color-primary, 30%);
+    }
+    &:active {      
+      background-color: mixcolor($color-white, $color-primary, 80%);
+    }
+  }
+
+  // 不可用
+  &[disabled]{
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}

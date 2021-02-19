@@ -1,0 +1,31 @@
+// css前缀
+$css-prefix: sl;
+
+// 色系
+$color-white: #fff;
+$color-black: #000;
+
+$color-primary: #17B3A3;
+$color-success: #7dc855;
+$color-warning: #fcce54;
+$color-danger: #ed5564;
+
+$color-text-primary: #333;
+$color-text-regular: #666;
+$color-text-secondary: #787878;
+$color-text-disabled: #bfbfbf;
+
+// 背景
+$color-bg-primary: #f1f2f3;
+// 边框
+$color-border-primary: #dcdcdc;
+// 圆角
+$border-radius: 3px;
+
+// mix function
+@function mixcolor($color1: $color-white, $color2: $color-primary, $percent: 20%){  
+  @return mix($color1, $color2, $percent);
+}
+
+
+

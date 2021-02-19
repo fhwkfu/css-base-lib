@@ -1,0 +1,72 @@
+// 滚动条
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: rgba(237, 237, 237, 1);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(145, 145, 145, .3);
+  border-radius: 8px;
+  transition: background-color 2s;
+  &:hover{
+    background-color: rgba(145, 145, 145, .8);
+  }
+}
+
+// 加载中
+.#{$css-prefix}-loading{
+  height: 42px;
+  width: 42px;  
+  .circular{
+    animation: loading-rotate 2s linear infinite;
+    circle{
+      stroke: $color-primary;
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: 0;
+      stroke-width: 2;
+      stroke-linecap: round; 
+      animation: loading-dash 1.5s ease-in-out infinite;
+    }
+  }
+}
+@keyframes loading-rotate {
+  to {
+    transform: rotate(1turn)
+  }
+}
+@keyframes loading-dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0
+  }
+  50% {
+    stroke-dasharray: 90,150;
+    stroke-dashoffset: -40px
+  }
+  to {
+    stroke-dasharray: 90,150;
+    stroke-dashoffset: -120px
+  }
+}
+
+// 清除浮动
+.#{$css-prefix}-clear{
+  clear: both;
+  &:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    *zoom:1;
+  }
+}
+
+// 省略号 
+.#{$css-prefix}-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+

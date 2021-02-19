@@ -1,0 +1,73 @@
+// 复选框
+.#{$css-prefix}-checkbox {
+  position: absolute;
+  display: none;
+  &+label {
+    position: relative;
+    display: block;
+    padding-left: 26px;
+    line-height: 1.3;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select:none;
+    -ms-user-select: none;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 1px solid $color-border-primary;  
+      background-color: $color-white;
+      border-radius: $border-radius;  
+      transition: background-color .1s ease, border-color .1s ease;
+    }
+    &:after {
+      content: '';
+      position: absolute;      
+      top: 1px;
+      left: 6px;
+      box-sizing: border-box;
+      width: 6px;
+      height: 12px;
+      transform: rotate(45deg);
+      border: 2px solid $color-white;
+      border-top: 0;
+      border-left: 0;
+    }
+
+  }
+  // 选中的
+  &:checked {
+    &+label:before {
+      border-color: $color-primary;
+      background-color: $color-primary;
+    }
+    &[disabled] {
+      &+label {
+        &:before {
+          border-color: $color-border-primary;
+          background-color: $color-bg-primary;
+        }
+        &:after {
+          display: block;
+          border-color: $color-border-primary;
+        }        
+      }    
+    }
+  }
+  // 不可用的
+  &:disabled {
+    &+label {
+      color: $color-text-disabled;
+      &:before {
+        background-color: $color-bg-primary;
+      }
+      &:after {
+        display: none;
+      }      
+    }
+  }
+}

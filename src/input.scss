@@ -1,0 +1,33 @@
+// 输入框
+.#{$css-prefix}-input,
+.#{$css-prefix}-textarea { 
+  font-family: inherit;
+  display: block;
+  resize: vertical;
+  padding: 8px 10px;
+  font-size: inherit;
+  line-height: 1.15;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  border: solid 1px $color-border-primary;
+  background-color: $color-white;
+  border-radius: $border-radius;
+  transition: border-color .2s ease;
+  &:hover,
+  &:focus {
+    border-color: mixcolor($color-white, $color-primary, 20%);
+  }
+
+}
+
+.#{$css-prefix}-input {
+  &[type="password"] {
+    letter-spacing: 1px;
+  }
+}
+
+.#{$css-prefix}-textarea {
+  resize: none;
+  line-height: 1.5;
+}

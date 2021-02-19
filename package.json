@@ -1,0 +1,15 @@
+{
+  "name": "css-lib",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass --output-style expanded src/base.scss dist/base.css && node-sass --output-style compressed src/base.scss dist/base.min.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  }
+}

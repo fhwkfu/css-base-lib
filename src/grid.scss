@@ -1,0 +1,130 @@
+// 24 栅格
+$total: 24;
+
+// container
+.#{$css-prefix}-container {
+  position: relative;
+  margin: 0 auto;
+}
+
+// row
+.#{$css-prefix}-row {
+  position: relative;
+  box-sizing: border-box;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  } 
+  &:after {
+    clear: both;
+  } 
+}
+
+// col
+[class*="#{$css-prefix}-col-"] {
+  float: left;
+  box-sizing: border-box;
+}
+@for $i from 1 through $total {  
+  .#{$css-prefix}-col-#{$i} { 
+    width: (1 / $total * $i * 100) * 1%;
+  };
+}
+
+/* Break-points
+ -------------------------- */
+$sm: 768px !default;
+$md: 992px !default;
+$lg: 1200px !default;
+$xl: 1920px !default;
+
+$--breakpoints: (
+  'xs' : (max-width: $sm - 1),
+  'sm' : (min-width: $sm),
+  'md' : (min-width: $md),
+  'lg' : (min-width: $lg),
+  'xl' : (min-width: $xl)
+);
+
+$--breakpoints-spec: (
+  'xs-only' : (max-width: $sm - 1),
+  'sm-and-up' : (min-width: $sm),
+  'sm-only': "(min-width: #{$sm}) and (max-width: #{$md - 1})",
+  'sm-and-down': (max-width: $md - 1),
+  'md-and-up' : (min-width: $md),
+  'md-only': "(min-width: #{$md}) and (max-width: #{$lg - 1})",
+  'md-and-down': (max-width: $lg - 1),
+  'lg-and-up' : (min-width: $lg),
+  'lg-only': "(min-width: #{$lg}) and (max-width: #{$xl - 1})",
+  'lg-and-down': (max-width: $xl - 1),
+  'xl-only' : (min-width: $xl),
+);
+
+@mixin res($key, $map: $--breakpoints) {
+  // 循环断点Map，如果存在则返回
+  @if map-has-key($map, $key) {
+    @media only screen and #{inspect(map-get($map, $key))} {
+      @content;
+    }
+  } @else {
+    @warn "Undefeined points: `#{$map}`";
+  }
+}
+
+// xs
+@include res(xs) {
+  @for $i from 0 through $total {
+    .#{$css-prefix}-col-xs-#{$i} {
+      width: (1 / $total * $i * 100) * 1%;
+    }
+  }
+}
+
+// sm
+@include res(sm) {
+  @for $i from 0 through $total {
+    .#{$css-prefix}-col-sm-#{$i} {
+      width: (1 / $total * $i * 100) * 1%;
+    }
+  }
+}
+
+// md
+@include res(md) {
+  .#{$css-prefix}-container {
+    width: 970px;
+  }  
+  @for $i from 0 through $total {
+    .#{$css-prefix}-col-md-#{$i} {
+      width: (1 / $total * $i * 100) * 1%;
+    }
+  }
+}
+
+// lg
+@include res(lg) {
+  .#{$css-prefix}-container {
+    width: 1170px;
+  }   
+  @for $i from 0 through $total {   
+    .#{$css-prefix}-col-lg-#{$i} {
+      width: (1 / $total * $i * 100) * 1%;
+    }
+  }
+}
+
+// xl
+@include res(xl) {
+  .#{$css-prefix}-container {
+    width: 1470px;
+  }   
+  @for $i from 0 through $total {
+    .#{$css-prefix}-col-xl-#{$i} {
+      width: (1 / $total * $i * 100) * 1%;
+    }
+  }
+}
+
+
+
